@@ -2,24 +2,29 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { Shop } from "./pages/shop/Shop";
+
 import { Contact } from "./pages/contact";
-import { Cart } from "./pages/cart/Cart";
-import { ShopContextProvider } from "./context/Shop-context";
+
+import ViewProduct from "./pages/ViewProduct/ViewProduct";
+import DeleteProduct from "./pages/DeleteProduct/DeleteProduct";
+import EditProduct from "./pages/EditProduct/EditProduct";
+import UpdateImg from "./pages/UpdateImg/UpdateImg";
 
 function App() {
   return (
     <div className="App">
-      <ShopContextProvider>
+      
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Shop />} />
+            <Route path="/" element={<ViewProduct/>} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/updateimage" element={<UpdateImg/>} />
+            <Route path="/deleteProduct" element={<DeleteProduct/>} />
+            <Route path="/editProduct" element={<EditProduct/>} />
           </Routes>
         </Router>
-      </ShopContextProvider>
+     
     </div>
   );
 }

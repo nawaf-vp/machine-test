@@ -1,13 +1,23 @@
-import React from 'react'
-import React from "react";
-import { PRODUCTS } from "../../products";
-import { Product } from "./product";
-import "./";
 
-const ViewProduct = () => {
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-    const {datas,error,loading} = useFetch("http://apitextile.eyeterp.com/product/viewproduct")
-  console.log(datas)
+const ViewProduct = ({ productId }) => {
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(`https://example.com/api/products/${productId}`); // Replace with your actual API endpoint
+        setProduct(response.data);
+      } catch (error) {
+        console.log('Error fetching product:', error);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
+
     return (
 
    
@@ -17,10 +27,19 @@ const ViewProduct = () => {
     </div>
 
     <div className="products">
-      
+    {product ? (
+        <div>
+          <img src={product.imageUrl} alt={product.name} />
+          <h2>{product.name}</h2>
+          <p>{product.description}</p>
+          <p>Price: {product.price}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   </div>
   )
 }
 
-export default ViewProduct
+export default ViewProduct ;
