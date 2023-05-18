@@ -8,7 +8,7 @@ const ViewProduct = ({ productId }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://example.com/api/products/${productId}`); // Replace with your actual API endpoint
+        const response = await axios.get(`https://example.com/api/products/${productId}`); 
         setProduct(response.data);
       } catch (error) {
         console.log('Error fetching product:', error);
