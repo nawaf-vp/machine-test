@@ -2,19 +2,22 @@ import React from 'react'
 import React from "react";
 import { PRODUCTS } from "../../products";
 import { Product } from "./product";
-import "./shop.css";
+import "./";
 
 const ViewProduct = () => {
-  return (
+
+    const {datas,error,loading} = useFetch("http://apitextile.eyeterp.com/product/viewproduct")
+  console.log(datas)
+    return (
+
+   
     <div className="shop">
     <div className="shopTitle">
       <h1>LeEyet Shop</h1>
     </div>
 
     <div className="products">
-      {PRODUCTS.map((product) => (
-        <Product data={product} />
-      ))}
+      
     </div>
   </div>
   )
