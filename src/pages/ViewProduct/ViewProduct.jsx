@@ -17,7 +17,7 @@ const ViewProduct = ({ productId }) => {
 
     fetchProduct();
   }, [productId]);
-
+    
     return (
 
    
